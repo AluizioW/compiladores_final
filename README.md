@@ -1,18 +1,28 @@
-## Getting Started
+# dl-short-3
+Este projeto é uma versão resumida da linguagem DL.  
+Esta versao faz as análises léxica, sintática e semântica.  
+Ela está de acordo com a gramática abaixo.  
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Gramática
+PROGRAM				::= programa ID BLOCK  
+BLOCK				::= inicio STMTS fim  
+STMTS				::= STMT; STMTS | ε  
+STMT				::= BLOCK | DECL | ASSIGN | WRITE | IF  
+DECL     			::= TYPE ID  
+ASSIGN   			::= ID = EXPR  
+WRITE				::= escreva(ID)  
+IF					::= se (EXPR) STMT  
+EXPR				::= EXPR "|" REL | REL  
+REL					::= REL < ARITH | REL <= ARITH | REL > ARITH | ARITH  
+ARITH  				::= ARITH + TERM | ARITH - TERM | TERM  
+TERM				::= TERM * FACTOR | FACTOR  
+FACTOR				::= (EXPR) | ID | LIT_INT | LIT_REAL | LIT_BOOL  
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Definições Regulares
+LETTER		::= a | b | ... | z | A | B | ... Z | _  
+DIGIT		::= 0 | 1 | ... | 9  
+ID			::= LETTER (LETTER | DIGIT)*  
+LIT_INT		::= DIGIT+  
+LIT_REAL	::= DIGIT+ . DIGIT+   
+LIT_BOOL	::= verdadeiro | falso  
+TYPE     	::= inteiro | real | booleano  
